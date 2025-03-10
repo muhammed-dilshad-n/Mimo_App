@@ -53,4 +53,54 @@ class AuthRepository implements IAuthRepository {
       return left(AuthFailure.unexpected(e.toString()));
     }
   }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signOut() async {
+    try {
+      _auth.signOut();
+      return right(unit);
+    } catch (e) {
+      return left(AuthFailure.unexpected(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signIn({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-credential') {
+        return left(AuthFailure.userNoteFound());
+      }
+      return left(AuthFailure.generic(e.message ?? 'Unknown error'));
+    } catch (e) {
+      return left(AuthFailure.unexpected(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> forgotPassword(
+      {required String email}) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      print("hiiiii");
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      print("erroorr");
+      if (e.code == 'user-not-found') {
+        return left(AuthFailure.userNoteFound());
+      }
+      return left(AuthFailure.generic(e.message ?? 'Unknown error'));
+    } catch (e) {
+      return left(AuthFailure.unexpected(e.toString()));
+    }
+  }
 }

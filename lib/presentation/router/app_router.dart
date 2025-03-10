@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/presentation/core/todo_app.dart';
 import 'package:flutter_application_1/presentation/screens/authentication/forgot_password_screen.dart';
 import 'package:flutter_application_1/presentation/screens/authentication/login_screen.dart';
 import 'package:flutter_application_1/presentation/screens/authentication/signup_screen.dart';
@@ -9,7 +10,8 @@ import 'package:flutter_application_1/presentation/screens/task/task_screen.dart
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: SignupScreen.routePath,
+  navigatorKey: TodoApp.navigatorkey,
+  initialLocation: SplashScreen.routePath,
   routes: <RouteBase>[
     GoRoute(
       path: SplashScreen.routePath,

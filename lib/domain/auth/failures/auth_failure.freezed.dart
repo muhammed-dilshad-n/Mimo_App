@@ -23,6 +23,8 @@ mixin _$AuthFailure {
     required TResult Function(String message) generic,
     required TResult Function(String error) unexpected,
     required TResult Function() unAuthenticated,
+    required TResult Function() userNoteFound,
+    required TResult Function() wrongPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +34,8 @@ mixin _$AuthFailure {
     TResult? Function(String message)? generic,
     TResult? Function(String error)? unexpected,
     TResult? Function()? unAuthenticated,
+    TResult? Function()? userNoteFound,
+    TResult? Function()? wrongPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +45,8 @@ mixin _$AuthFailure {
     TResult Function(String message)? generic,
     TResult Function(String error)? unexpected,
     TResult Function()? unAuthenticated,
+    TResult Function()? userNoteFound,
+    TResult Function()? wrongPassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +57,8 @@ mixin _$AuthFailure {
     required TResult Function(_Generic value) generic,
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_UnAuthenticated value) unAuthenticated,
+    required TResult Function(_UserNoteFound value) userNoteFound,
+    required TResult Function(_WrongPassword value) wrongPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +68,8 @@ mixin _$AuthFailure {
     TResult? Function(_Generic value)? generic,
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_UnAuthenticated value)? unAuthenticated,
+    TResult? Function(_UserNoteFound value)? userNoteFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +79,8 @@ mixin _$AuthFailure {
     TResult Function(_Generic value)? generic,
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_UnAuthenticated value)? unAuthenticated,
+    TResult Function(_UserNoteFound value)? userNoteFound,
+    TResult Function(_WrongPassword value)? wrongPassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,6 +153,8 @@ class _$EmailAlreadyInUseImpl implements _EmailAlreadyInUse {
     required TResult Function(String message) generic,
     required TResult Function(String error) unexpected,
     required TResult Function() unAuthenticated,
+    required TResult Function() userNoteFound,
+    required TResult Function() wrongPassword,
   }) {
     return emailAlreadyInUse();
   }
@@ -153,6 +167,8 @@ class _$EmailAlreadyInUseImpl implements _EmailAlreadyInUse {
     TResult? Function(String message)? generic,
     TResult? Function(String error)? unexpected,
     TResult? Function()? unAuthenticated,
+    TResult? Function()? userNoteFound,
+    TResult? Function()? wrongPassword,
   }) {
     return emailAlreadyInUse?.call();
   }
@@ -165,6 +181,8 @@ class _$EmailAlreadyInUseImpl implements _EmailAlreadyInUse {
     TResult Function(String message)? generic,
     TResult Function(String error)? unexpected,
     TResult Function()? unAuthenticated,
+    TResult Function()? userNoteFound,
+    TResult Function()? wrongPassword,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -181,6 +199,8 @@ class _$EmailAlreadyInUseImpl implements _EmailAlreadyInUse {
     required TResult Function(_Generic value) generic,
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_UnAuthenticated value) unAuthenticated,
+    required TResult Function(_UserNoteFound value) userNoteFound,
+    required TResult Function(_WrongPassword value) wrongPassword,
   }) {
     return emailAlreadyInUse(this);
   }
@@ -193,6 +213,8 @@ class _$EmailAlreadyInUseImpl implements _EmailAlreadyInUse {
     TResult? Function(_Generic value)? generic,
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_UnAuthenticated value)? unAuthenticated,
+    TResult? Function(_UserNoteFound value)? userNoteFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
   }) {
     return emailAlreadyInUse?.call(this);
   }
@@ -205,6 +227,8 @@ class _$EmailAlreadyInUseImpl implements _EmailAlreadyInUse {
     TResult Function(_Generic value)? generic,
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_UnAuthenticated value)? unAuthenticated,
+    TResult Function(_UserNoteFound value)? userNoteFound,
+    TResult Function(_WrongPassword value)? wrongPassword,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -264,6 +288,8 @@ class _$WeakPasswordImpl implements _WeakPassword {
     required TResult Function(String message) generic,
     required TResult Function(String error) unexpected,
     required TResult Function() unAuthenticated,
+    required TResult Function() userNoteFound,
+    required TResult Function() wrongPassword,
   }) {
     return weakPassword();
   }
@@ -276,6 +302,8 @@ class _$WeakPasswordImpl implements _WeakPassword {
     TResult? Function(String message)? generic,
     TResult? Function(String error)? unexpected,
     TResult? Function()? unAuthenticated,
+    TResult? Function()? userNoteFound,
+    TResult? Function()? wrongPassword,
   }) {
     return weakPassword?.call();
   }
@@ -288,6 +316,8 @@ class _$WeakPasswordImpl implements _WeakPassword {
     TResult Function(String message)? generic,
     TResult Function(String error)? unexpected,
     TResult Function()? unAuthenticated,
+    TResult Function()? userNoteFound,
+    TResult Function()? wrongPassword,
     required TResult orElse(),
   }) {
     if (weakPassword != null) {
@@ -304,6 +334,8 @@ class _$WeakPasswordImpl implements _WeakPassword {
     required TResult Function(_Generic value) generic,
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_UnAuthenticated value) unAuthenticated,
+    required TResult Function(_UserNoteFound value) userNoteFound,
+    required TResult Function(_WrongPassword value) wrongPassword,
   }) {
     return weakPassword(this);
   }
@@ -316,6 +348,8 @@ class _$WeakPasswordImpl implements _WeakPassword {
     TResult? Function(_Generic value)? generic,
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_UnAuthenticated value)? unAuthenticated,
+    TResult? Function(_UserNoteFound value)? userNoteFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
   }) {
     return weakPassword?.call(this);
   }
@@ -328,6 +362,8 @@ class _$WeakPasswordImpl implements _WeakPassword {
     TResult Function(_Generic value)? generic,
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_UnAuthenticated value)? unAuthenticated,
+    TResult Function(_UserNoteFound value)? userNoteFound,
+    TResult Function(_WrongPassword value)? wrongPassword,
     required TResult orElse(),
   }) {
     if (weakPassword != null) {
@@ -414,6 +450,8 @@ class _$GenericImpl implements _Generic {
     required TResult Function(String message) generic,
     required TResult Function(String error) unexpected,
     required TResult Function() unAuthenticated,
+    required TResult Function() userNoteFound,
+    required TResult Function() wrongPassword,
   }) {
     return generic(message);
   }
@@ -426,6 +464,8 @@ class _$GenericImpl implements _Generic {
     TResult? Function(String message)? generic,
     TResult? Function(String error)? unexpected,
     TResult? Function()? unAuthenticated,
+    TResult? Function()? userNoteFound,
+    TResult? Function()? wrongPassword,
   }) {
     return generic?.call(message);
   }
@@ -438,6 +478,8 @@ class _$GenericImpl implements _Generic {
     TResult Function(String message)? generic,
     TResult Function(String error)? unexpected,
     TResult Function()? unAuthenticated,
+    TResult Function()? userNoteFound,
+    TResult Function()? wrongPassword,
     required TResult orElse(),
   }) {
     if (generic != null) {
@@ -454,6 +496,8 @@ class _$GenericImpl implements _Generic {
     required TResult Function(_Generic value) generic,
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_UnAuthenticated value) unAuthenticated,
+    required TResult Function(_UserNoteFound value) userNoteFound,
+    required TResult Function(_WrongPassword value) wrongPassword,
   }) {
     return generic(this);
   }
@@ -466,6 +510,8 @@ class _$GenericImpl implements _Generic {
     TResult? Function(_Generic value)? generic,
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_UnAuthenticated value)? unAuthenticated,
+    TResult? Function(_UserNoteFound value)? userNoteFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
   }) {
     return generic?.call(this);
   }
@@ -478,6 +524,8 @@ class _$GenericImpl implements _Generic {
     TResult Function(_Generic value)? generic,
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_UnAuthenticated value)? unAuthenticated,
+    TResult Function(_UserNoteFound value)? userNoteFound,
+    TResult Function(_WrongPassword value)? wrongPassword,
     required TResult orElse(),
   }) {
     if (generic != null) {
@@ -572,6 +620,8 @@ class _$UnexpectedImpl implements _Unexpected {
     required TResult Function(String message) generic,
     required TResult Function(String error) unexpected,
     required TResult Function() unAuthenticated,
+    required TResult Function() userNoteFound,
+    required TResult Function() wrongPassword,
   }) {
     return unexpected(error);
   }
@@ -584,6 +634,8 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult? Function(String message)? generic,
     TResult? Function(String error)? unexpected,
     TResult? Function()? unAuthenticated,
+    TResult? Function()? userNoteFound,
+    TResult? Function()? wrongPassword,
   }) {
     return unexpected?.call(error);
   }
@@ -596,6 +648,8 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult Function(String message)? generic,
     TResult Function(String error)? unexpected,
     TResult Function()? unAuthenticated,
+    TResult Function()? userNoteFound,
+    TResult Function()? wrongPassword,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -612,6 +666,8 @@ class _$UnexpectedImpl implements _Unexpected {
     required TResult Function(_Generic value) generic,
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_UnAuthenticated value) unAuthenticated,
+    required TResult Function(_UserNoteFound value) userNoteFound,
+    required TResult Function(_WrongPassword value) wrongPassword,
   }) {
     return unexpected(this);
   }
@@ -624,6 +680,8 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult? Function(_Generic value)? generic,
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_UnAuthenticated value)? unAuthenticated,
+    TResult? Function(_UserNoteFound value)? userNoteFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
   }) {
     return unexpected?.call(this);
   }
@@ -636,6 +694,8 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult Function(_Generic value)? generic,
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_UnAuthenticated value)? unAuthenticated,
+    TResult Function(_UserNoteFound value)? userNoteFound,
+    TResult Function(_WrongPassword value)? wrongPassword,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -703,6 +763,8 @@ class _$UnAuthenticatedImpl implements _UnAuthenticated {
     required TResult Function(String message) generic,
     required TResult Function(String error) unexpected,
     required TResult Function() unAuthenticated,
+    required TResult Function() userNoteFound,
+    required TResult Function() wrongPassword,
   }) {
     return unAuthenticated();
   }
@@ -715,6 +777,8 @@ class _$UnAuthenticatedImpl implements _UnAuthenticated {
     TResult? Function(String message)? generic,
     TResult? Function(String error)? unexpected,
     TResult? Function()? unAuthenticated,
+    TResult? Function()? userNoteFound,
+    TResult? Function()? wrongPassword,
   }) {
     return unAuthenticated?.call();
   }
@@ -727,6 +791,8 @@ class _$UnAuthenticatedImpl implements _UnAuthenticated {
     TResult Function(String message)? generic,
     TResult Function(String error)? unexpected,
     TResult Function()? unAuthenticated,
+    TResult Function()? userNoteFound,
+    TResult Function()? wrongPassword,
     required TResult orElse(),
   }) {
     if (unAuthenticated != null) {
@@ -743,6 +809,8 @@ class _$UnAuthenticatedImpl implements _UnAuthenticated {
     required TResult Function(_Generic value) generic,
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_UnAuthenticated value) unAuthenticated,
+    required TResult Function(_UserNoteFound value) userNoteFound,
+    required TResult Function(_WrongPassword value) wrongPassword,
   }) {
     return unAuthenticated(this);
   }
@@ -755,6 +823,8 @@ class _$UnAuthenticatedImpl implements _UnAuthenticated {
     TResult? Function(_Generic value)? generic,
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_UnAuthenticated value)? unAuthenticated,
+    TResult? Function(_UserNoteFound value)? userNoteFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
   }) {
     return unAuthenticated?.call(this);
   }
@@ -767,6 +837,8 @@ class _$UnAuthenticatedImpl implements _UnAuthenticated {
     TResult Function(_Generic value)? generic,
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_UnAuthenticated value)? unAuthenticated,
+    TResult Function(_UserNoteFound value)? userNoteFound,
+    TResult Function(_WrongPassword value)? wrongPassword,
     required TResult orElse(),
   }) {
     if (unAuthenticated != null) {
@@ -778,4 +850,274 @@ class _$UnAuthenticatedImpl implements _UnAuthenticated {
 
 abstract class _UnAuthenticated implements AuthFailure {
   const factory _UnAuthenticated() = _$UnAuthenticatedImpl;
+}
+
+/// @nodoc
+abstract class _$$UserNoteFoundImplCopyWith<$Res> {
+  factory _$$UserNoteFoundImplCopyWith(
+          _$UserNoteFoundImpl value, $Res Function(_$UserNoteFoundImpl) then) =
+      __$$UserNoteFoundImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UserNoteFoundImplCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$UserNoteFoundImpl>
+    implements _$$UserNoteFoundImplCopyWith<$Res> {
+  __$$UserNoteFoundImplCopyWithImpl(
+      _$UserNoteFoundImpl _value, $Res Function(_$UserNoteFoundImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UserNoteFoundImpl implements _UserNoteFound {
+  const _$UserNoteFoundImpl();
+
+  @override
+  String toString() {
+    return 'AuthFailure.userNoteFound()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UserNoteFoundImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() weakPassword,
+    required TResult Function(String message) generic,
+    required TResult Function(String error) unexpected,
+    required TResult Function() unAuthenticated,
+    required TResult Function() userNoteFound,
+    required TResult Function() wrongPassword,
+  }) {
+    return userNoteFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function(String message)? generic,
+    TResult? Function(String error)? unexpected,
+    TResult? Function()? unAuthenticated,
+    TResult? Function()? userNoteFound,
+    TResult? Function()? wrongPassword,
+  }) {
+    return userNoteFound?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? weakPassword,
+    TResult Function(String message)? generic,
+    TResult Function(String error)? unexpected,
+    TResult Function()? unAuthenticated,
+    TResult Function()? userNoteFound,
+    TResult Function()? wrongPassword,
+    required TResult orElse(),
+  }) {
+    if (userNoteFound != null) {
+      return userNoteFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_Generic value) generic,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_UnAuthenticated value) unAuthenticated,
+    required TResult Function(_UserNoteFound value) userNoteFound,
+    required TResult Function(_WrongPassword value) wrongPassword,
+  }) {
+    return userNoteFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_Generic value)? generic,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_UnAuthenticated value)? unAuthenticated,
+    TResult? Function(_UserNoteFound value)? userNoteFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+  }) {
+    return userNoteFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_Generic value)? generic,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_UnAuthenticated value)? unAuthenticated,
+    TResult Function(_UserNoteFound value)? userNoteFound,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    required TResult orElse(),
+  }) {
+    if (userNoteFound != null) {
+      return userNoteFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserNoteFound implements AuthFailure {
+  const factory _UserNoteFound() = _$UserNoteFoundImpl;
+}
+
+/// @nodoc
+abstract class _$$WrongPasswordImplCopyWith<$Res> {
+  factory _$$WrongPasswordImplCopyWith(
+          _$WrongPasswordImpl value, $Res Function(_$WrongPasswordImpl) then) =
+      __$$WrongPasswordImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$WrongPasswordImplCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$WrongPasswordImpl>
+    implements _$$WrongPasswordImplCopyWith<$Res> {
+  __$$WrongPasswordImplCopyWithImpl(
+      _$WrongPasswordImpl _value, $Res Function(_$WrongPasswordImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthFailure
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$WrongPasswordImpl implements _WrongPassword {
+  const _$WrongPasswordImpl();
+
+  @override
+  String toString() {
+    return 'AuthFailure.wrongPassword()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$WrongPasswordImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() weakPassword,
+    required TResult Function(String message) generic,
+    required TResult Function(String error) unexpected,
+    required TResult Function() unAuthenticated,
+    required TResult Function() userNoteFound,
+    required TResult Function() wrongPassword,
+  }) {
+    return wrongPassword();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function(String message)? generic,
+    TResult? Function(String error)? unexpected,
+    TResult? Function()? unAuthenticated,
+    TResult? Function()? userNoteFound,
+    TResult? Function()? wrongPassword,
+  }) {
+    return wrongPassword?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? weakPassword,
+    TResult Function(String message)? generic,
+    TResult Function(String error)? unexpected,
+    TResult Function()? unAuthenticated,
+    TResult Function()? userNoteFound,
+    TResult Function()? wrongPassword,
+    required TResult orElse(),
+  }) {
+    if (wrongPassword != null) {
+      return wrongPassword();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_Generic value) generic,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_UnAuthenticated value) unAuthenticated,
+    required TResult Function(_UserNoteFound value) userNoteFound,
+    required TResult Function(_WrongPassword value) wrongPassword,
+  }) {
+    return wrongPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_Generic value)? generic,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_UnAuthenticated value)? unAuthenticated,
+    TResult? Function(_UserNoteFound value)? userNoteFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+  }) {
+    return wrongPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_Generic value)? generic,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_UnAuthenticated value)? unAuthenticated,
+    TResult Function(_UserNoteFound value)? userNoteFound,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    required TResult orElse(),
+  }) {
+    if (wrongPassword != null) {
+      return wrongPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WrongPassword implements AuthFailure {
+  const factory _WrongPassword() = _$WrongPasswordImpl;
 }

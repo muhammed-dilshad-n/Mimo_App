@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/application/auth/auth_bloc.dart';
 import 'package:flutter_application_1/application/signup/signup_bloc.dart';
 import 'package:flutter_application_1/presentation/screens/authentication/login_screen.dart';
 import 'package:flutter_application_1/presentation/screens/authentication/widget/button_widget.dart';
@@ -113,6 +114,9 @@ class SignupScreen extends HookWidget {
                   ),
                   backgroundColor: Colors.green,
                 ));
+                context
+                    .read<AuthBloc>()
+                    .add(const AuthEvent.authCheckRequested());
                 return;
               },
             );

@@ -9,4 +9,6 @@ class AuthFailure with _$AuthFailure {
   const factory AuthFailure.generic(String message) = _Generic;
   const factory AuthFailure.unexpected(String error) = _Unexpected;
   const factory AuthFailure.unAuthenticated() = _UnAuthenticated;
+  const factory AuthFailure.userNoteFound() = _UserNoteFound;
+  const factory AuthFailure.wrongPassword() = _WrongPassword;
 }

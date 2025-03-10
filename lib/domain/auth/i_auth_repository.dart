@@ -8,5 +8,13 @@ abstract class IAuthRepository {
     required String email,
     required String password,
   });
+  Future<Either<AuthFailure, Unit>> signIn({
+    required String email,
+    required String password,
+  });
+  Future<Either<AuthFailure, Unit>> forgotPassword({
+    required String email,
+  });
   Future<Either<AuthFailure, User>> getUser();
+  Future<Either<AuthFailure, Unit>> signOut();
 }

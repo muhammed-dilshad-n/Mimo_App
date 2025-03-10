@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/application/auth/auth_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingsScreen extends StatelessWidget {
   static const routePath = "/SettingsScreen";
@@ -106,6 +108,26 @@ class SettingsScreen extends StatelessWidget {
                   children: [
                     IconButton(onPressed: () {}, icon: Icon(Icons.info)),
                     Text("About"),
+                  ],
+                ),
+                Row(
+                  spacing: 10,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        context
+                            .read<AuthBloc>()
+                            .add(const AuthEvent.userLoggedOut());
+                      },
+                      icon: Icon(
+                        Icons.logout,
+                        color: Colors.red,
+                      ),
+                    ),
+                    Text(
+                      "Signout",
+                      style: TextStyle(color: Colors.red),
+                    ),
                   ],
                 ),
               ],
