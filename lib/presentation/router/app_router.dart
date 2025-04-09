@@ -4,9 +4,10 @@ import 'package:flutter_application_1/presentation/screens/authentication/forgot
 import 'package:flutter_application_1/presentation/screens/authentication/login_screen.dart';
 import 'package:flutter_application_1/presentation/screens/authentication/signup_screen.dart';
 import 'package:flutter_application_1/presentation/screens/categories/categories_screen.dart';
+import 'package:flutter_application_1/presentation/screens/settings/settings_edit_screen.dart';
 import 'package:flutter_application_1/presentation/screens/settings/settings_screen.dart';
 import 'package:flutter_application_1/presentation/screens/splash_screen/splash_screen.dart';
-import 'package:flutter_application_1/presentation/screens/task/task_screen.dart';
+import 'package:flutter_application_1/presentation/screens/task/view/pages/task_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
@@ -53,6 +54,12 @@ final GoRouter router = GoRouter(
       path: TaskScreen.routePath,
       builder: (BuildContext context, GoRouterState state) {
         return TaskScreen();
+      },
+    ),
+    GoRoute(
+      path: SettingsEditScreen.routePath,
+      builder: (BuildContext context, GoRouterState state) {
+        return SettingsEditScreen();
       },
     ),
   ],

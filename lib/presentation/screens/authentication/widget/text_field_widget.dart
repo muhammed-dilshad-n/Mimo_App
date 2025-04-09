@@ -4,7 +4,9 @@ class TextFormFieldWidget extends StatelessWidget {
   final String hintText;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
+  final int? maxLines;
   const TextFormFieldWidget({
+    this.maxLines,
     this.controller,
     this.validator,
     required this.hintText,
@@ -14,6 +16,7 @@ class TextFormFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines,
       validator: validator,
       controller: controller,
       cursorColor: Colors.white,

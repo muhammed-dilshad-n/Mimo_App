@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/application/auth/auth_bloc.dart';
+import 'package:flutter_application_1/application/user/user_bloc.dart';
+import 'package:flutter_application_1/presentation/screens/settings/settings_edit_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -9,6 +11,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final taskBloc = context.read<UserBloc>().add(UserEvent.loadedUser());
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -23,117 +26,149 @@ class SettingsScreen extends StatelessWidget {
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500)),
       ),
       backgroundColor: Theme.of(context).colorScheme.primary,
-      body: Column(
-        children: [
-          SizedBox(
-            height: 16,
-          ),
-          Row(
+      body: BlocBuilder<UserBloc, UserState>(
+        builder: (context, state) {
+          final username =
+              state.users.isNotEmpty ? state.users.first.name : "Max";
+          final userlocation =
+              state.users.isNotEmpty ? state.users.first.location : "london";
+          final userbio = state.users.isNotEmpty
+              ? state.users.first.bio
+              : " I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. Lee is a Marketing Strategist with 5+ years of experience helping brands increase revenue through strategic campaigns.";
+
+          if (state.isSubmitting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return Column(
             children: [
               SizedBox(
-                width: 35,
+                height: 16,
               ),
-              CircleAvatar(
-                radius: 30,
-                backgroundImage: AssetImage("assets/images/porfile.png"),
-              ),
-              SizedBox(
-                width: 14,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
                 children: [
-                  Text(
-                    "Selena Gomez",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+                  SizedBox(
+                    width: 35,
                   ),
-                  Text(
-                    textAlign: TextAlign.start,
-                    " Rabat, England",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundImage: AssetImage("assets/images/porfile.png"),
                   ),
+                  SizedBox(
+                    width: 14,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        username,
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        textAlign: TextAlign.start,
+                        userlocation,
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                  Spacer(),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SettingsEditScreen()));
+                      },
+                      icon: Icon(Icons.edit, size: 30, color: Colors.white)),
+                  SizedBox(
+                    width: 20,
+                  )
                 ],
               ),
-              Spacer(),
-              IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.edit, size: 30, color: Colors.white)),
               SizedBox(
-                width: 20,
+                height: 25,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  userbio,
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    Row(
+                      spacing: 10,
+                      children: [
+                        IconButton(
+                            onPressed: () {}, icon: Icon(Icons.notifications)),
+                        Text("Notification"),
+                      ],
+                    ),
+                    Row(
+                      spacing: 10,
+                      children: [
+                        IconButton(
+                            onPressed: () {}, icon: Icon(Icons.settings)),
+                        Text("General"),
+                      ],
+                    ),
+                    Row(
+                      spacing: 10,
+                      children: [
+                        IconButton(
+                            onPressed: () {}, icon: Icon(Icons.account_circle)),
+                        Text("Account"),
+                      ],
+                    ),
+                    Row(
+                      spacing: 10,
+                      children: [
+                        IconButton(onPressed: () {}, icon: Icon(Icons.info)),
+                        Text("About"),
+                      ],
+                    ),
+                    Row(
+                      spacing: 10,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            context
+                                .read<AuthBloc>()
+                                .add(const AuthEvent.userLoggedOut());
+                          },
+                          icon: Icon(
+                            Icons.logout,
+                            color: Colors.red,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            context
+                                .read<AuthBloc>()
+                                .add(const AuthEvent.userLoggedOut());
+                          },
+                          child: Text(
+                            "Signout",
+                            style: TextStyle(color: Colors.red),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               )
             ],
-          ),
-          SizedBox(
-            height: 25,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Text(
-              "Hii My name is Selena, I'm a community manager from Rabat,England",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-            ),
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                Row(
-                  spacing: 10,
-                  children: [
-                    IconButton(
-                        onPressed: () {}, icon: Icon(Icons.notifications)),
-                    Text("Notification"),
-                  ],
-                ),
-                Row(
-                  spacing: 10,
-                  children: [
-                    IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
-                    Text("General"),
-                  ],
-                ),
-                Row(
-                  spacing: 10,
-                  children: [
-                    IconButton(
-                        onPressed: () {}, icon: Icon(Icons.account_circle)),
-                    Text("Account"),
-                  ],
-                ),
-                Row(
-                  spacing: 10,
-                  children: [
-                    IconButton(onPressed: () {}, icon: Icon(Icons.info)),
-                    Text("About"),
-                  ],
-                ),
-                Row(
-                  spacing: 10,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        context
-                            .read<AuthBloc>()
-                            .add(const AuthEvent.userLoggedOut());
-                      },
-                      icon: Icon(
-                        Icons.logout,
-                        color: Colors.red,
-                      ),
-                    ),
-                    Text(
-                      "Signout",
-                      style: TextStyle(color: Colors.red),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )
-        ],
+          );
+        },
       ),
     );
   }

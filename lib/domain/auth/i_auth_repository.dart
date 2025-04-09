@@ -1,6 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_1/domain/auth/failures/auth_failure.dart';
+import 'package:flutter_application_1/domain/settings/model/user_model.dart';
+import 'package:flutter_application_1/presentation/screens/task/model/taskmodel/task_model.dart';
 
 abstract class IAuthRepository {
   Future<Either<AuthFailure, Unit>> signUp({
@@ -16,5 +20,31 @@ abstract class IAuthRepository {
     required String email,
   });
   Future<Either<AuthFailure, User>> getUser();
+  Future<Either<AuthFailure, UserModel>> updateUserData({
+    required String name,
+    required String location,
+    required String bio,
+    Uint8List? imageBytes,
+  });
+
   Future<Either<AuthFailure, Unit>> signOut();
+  Future<Either<AuthFailure, List<UserModel>>> getUserdata();
+  Future<Either<AuthFailure, List<UserModel>>> addUserData({
+    required String name,
+    required String location,
+    required String bio,
+  });
+  Future<Either<AuthFailure, List<TaskModel>>> addTask({
+    required String emoji,
+    required String title,
+  });
+  Future<Either<AuthFailure, List<TaskModel>>> getTask();
+  Future<Either<AuthFailure, List<TaskModel>>> updateTask({
+    required String docId,
+    String? emoji,
+    String? title,
+  });
+  // Future<Either<AuthFailure, Unit>> deleteTask({
+  //   required TaskModel task,
+  // });
 }
