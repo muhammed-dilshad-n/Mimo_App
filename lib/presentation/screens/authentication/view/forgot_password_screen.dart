@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/application/forgot/forgot_bloc.dart';
-import 'package:flutter_application_1/presentation/screens/authentication/login_screen.dart';
+import 'package:flutter_application_1/presentation/screens/authentication/view/login_screen.dart';
 import 'package:flutter_application_1/presentation/screens/authentication/widget/button_widget.dart';
 import 'package:flutter_application_1/presentation/screens/authentication/widget/text_field_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -260,29 +260,6 @@ class CategoriesScreen extends HookWidget {
                                         250, 118, 124, 131)),
                               ),
                             ),
-                            // TextFormField(
-                            //   controller: taskController,
-                            //   keyboardType: TextInputType.number,
-                            //   validator: (value) {
-                            //     if (value == null || value.isEmpty) {
-                            //       return "Enter how many tasks you want";
-                            //     }
-                            //     if (int.tryParse(value) == null) {
-                            //       return "Enter only number";
-                            //     }
-                            //     return null;
-                            //   },
-                            //   style:
-                            //       TextStyle(fontSize: 25, color: Colors.white),
-                            //   decoration: InputDecoration(
-                            //     border: InputBorder.none,
-                            //     hintText: 'Task',
-                            //     hintStyle: TextStyle(
-                            //         fontSize: 25,
-                            //         color: const Color.fromARGB(
-                            //             250, 118, 124, 131)),
-                            //   ),
-                            // ),
                             Row(
                               children: [
                                 GestureDetector(

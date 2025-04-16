@@ -7,6 +7,7 @@ import 'package:flutter_application_1/core/injection/injection.dart';
 import 'package:flutter_application_1/domain/auth/failures/auth_failure.dart';
 import 'package:flutter_application_1/domain/auth/i_auth_repository.dart';
 import 'package:flutter_application_1/domain/settings/model/user_model.dart';
+import 'package:flutter_application_1/presentation/screens/task/model/task_data_model/task_data_model.dart';
 import 'package:flutter_application_1/presentation/screens/task/model/taskmodel/task_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -119,7 +120,7 @@ class AuthRepository implements IAuthRepository {
     try {
       final id = DateTime.now().millisecondsSinceEpoch.toString();
       _firestore
-          .collection('user')
+          .collection('users')
           .doc(id)
           .set({'id': id, 'name': name, 'location': location, 'bio': bio});
       final data = await getuserData();
@@ -148,7 +149,7 @@ class AuthRepository implements IAuthRepository {
   Future<Either<AuthFailure, List<UserModel>>> getUserdata() async {
     try {
       _firestore
-          .collection('user')
+          .collection('users')
           .doc(_auth.currentUser!.uid)
           .get()
           .then((value) {});
@@ -166,7 +167,14 @@ class AuthRepository implements IAuthRepository {
   }) async {
     try {
       final id = DateTime.now().millisecondsSinceEpoch.toString();
-      _firestore.collection('task').doc(id).set({
+      _firestore
+          .collection('users')
+          .doc(
+            _auth.currentUser!.uid,
+          )
+          .collection('category')
+          .doc(id)
+          .set({
         'docId': id,
         'id': _auth.currentUser!.uid,
         'emoji': emoji,
@@ -220,13 +228,29 @@ class AuthRepository implements IAuthRepository {
   }
 
   Future<List<TaskModel>> getTaskData() async {
-    final List<TaskModel> data =
-        await _firestore.collection('task').get().then((val) {
+    final List<TaskModel> data = await _firestore
+        .collection('users')
+        .doc(_auth.currentUser!.uid)
+        .collection('category')
+        .orderBy('id', descending: true)
+        .get()
+        .then((val) {
       return val.docs.map((doc) {
         log(doc.data().toString());
         return TaskModel.fromJson(doc.data());
       }).toList();
     });
+    //     .collection('users')
+    //     .doc()
+    //     .collection('category')
+    //     .orderBy('id', descending: true)
+    //     .get()
+    //     .then((val) {
+    //   return val.docs.map((doc) {
+    //     log(doc.data().toString());
+    //     return TaskModel.fromJson(doc.data());
+    //   }).toList();
+    // });
     return data;
   }
 
@@ -285,6 +309,50 @@ class AuthRepository implements IAuthRepository {
       print(e);
       return left(const AuthFailure.generic(
           "something went wrong")); // Or a more specific error based on 'e'
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, List<TaskDataModel>>> addTaskdata(
+      {required TaskDataModel taskDataModel}) async {
+    try {
+      await _firestore
+          .collection('task')
+          .doc(
+            taskDataModel.id,
+          )
+          .collection("taskdata")
+          .doc(taskDataModel.id)
+          .set({
+        'title': taskDataModel.title,
+        'completed': taskDataModel.completed,
+      });
+      return right([]);
+    } catch (e) {
+      return left(AuthFailure.unexpected(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, List<TaskDataModel>>> getTaskdatas() async {
+    try {
+      final data = await _firestore
+          .collection('task')
+          .doc(
+            _auth.currentUser!.uid,
+          )
+          .collection("taskdata")
+          .get()
+          .then((val) {
+        return val.docs.map((doc) {
+          log(doc.data().toString());
+          return TaskDataModel.fromJson(doc.data());
+        }).toList();
+      });
+      return right(data);
+    } catch (e) {
+      log(e.toString());
+      return left(AuthFailure.unexpected(e.toString()));
     }
   }
 }

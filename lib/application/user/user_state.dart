@@ -8,10 +8,4 @@ class UserState with _$UserState {
     UserModel? currentUser,
     Option<Either<AuthFailure, Unit>>? authFailureOrSuccessOption,
   }) = _UserState;
-
-  factory UserState.initial() => const UserState(
-        isSubmitting: false,
-        users: [],
-        authFailureOrSuccessOption: None(),
-      );
 }

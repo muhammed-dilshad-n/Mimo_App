@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/application/auth/auth_bloc.dart';
 import 'package:flutter_application_1/application/signIn/signin_bloc.dart';
-import 'package:flutter_application_1/presentation/screens/authentication/forgot_password_screen.dart';
-import 'package:flutter_application_1/presentation/screens/authentication/signup_screen.dart';
+import 'package:flutter_application_1/presentation/screens/authentication/view/forgot_password_screen.dart';
+import 'package:flutter_application_1/presentation/screens/authentication/view/signup_screen.dart';
 import 'package:flutter_application_1/presentation/screens/authentication/widget/button_widget.dart';
 import 'package:flutter_application_1/presentation/screens/authentication/widget/text_field_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

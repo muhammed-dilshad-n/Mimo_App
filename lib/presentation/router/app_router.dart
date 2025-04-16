@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/presentation/core/todo_app.dart';
-import 'package:flutter_application_1/presentation/screens/authentication/forgot_password_screen.dart';
-import 'package:flutter_application_1/presentation/screens/authentication/login_screen.dart';
-import 'package:flutter_application_1/presentation/screens/authentication/signup_screen.dart';
+import 'package:flutter_application_1/presentation/screens/authentication/view/forgot_password_screen.dart';
+import 'package:flutter_application_1/presentation/screens/authentication/view/login_screen.dart';
+import 'package:flutter_application_1/presentation/screens/authentication/view/signup_screen.dart';
 import 'package:flutter_application_1/presentation/screens/categories/categories_screen.dart';
 import 'package:flutter_application_1/presentation/screens/settings/settings_edit_screen.dart';
 import 'package:flutter_application_1/presentation/screens/settings/settings_screen.dart';

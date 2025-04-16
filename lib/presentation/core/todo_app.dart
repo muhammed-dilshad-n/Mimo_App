@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/application/auth/auth_bloc.dart';
+import 'package:flutter_application_1/application/taskdata/taskdata_bloc.dart';
 import 'package:flutter_application_1/application/user/user_bloc.dart';
 import 'package:flutter_application_1/application/forgot/forgot_bloc.dart';
 import 'package:flutter_application_1/application/signIn/signin_bloc.dart';
@@ -7,7 +8,7 @@ import 'package:flutter_application_1/application/signup/signup_bloc.dart';
 import 'package:flutter_application_1/application/task/task_bloc.dart';
 import 'package:flutter_application_1/core/injection/injection.dart';
 import 'package:flutter_application_1/presentation/router/app_router.dart';
-import 'package:flutter_application_1/presentation/screens/authentication/login_screen.dart';
+import 'package:flutter_application_1/presentation/screens/authentication/view/login_screen.dart';
 import 'package:flutter_application_1/presentation/screens/categories/categories_screen.dart';
 import 'package:flutter_application_1/presentation/theme/app_theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,6 +33,7 @@ class TodoApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<ForgotBloc>()),
         BlocProvider(create: (context) => getIt<TaskBloc>()),
         BlocProvider(create: (context) => getIt<UserBloc>()),
+        BlocProvider(create: (context) => getIt<TaskDataBloc>()),
       ],
       child: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {

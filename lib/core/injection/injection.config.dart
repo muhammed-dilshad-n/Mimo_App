@@ -10,7 +10,6 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flutter_application_1/application/auth/auth_bloc.dart' as _i963;
-import 'package:flutter_application_1/application/user/user_bloc.dart' as _i296;
 import 'package:flutter_application_1/application/forgot/forgot_bloc.dart'
     as _i230;
 import 'package:flutter_application_1/application/signIn/signin_bloc.dart'
@@ -19,6 +18,9 @@ import 'package:flutter_application_1/application/signup/signup_bloc.dart'
     as _i301;
 import 'package:flutter_application_1/application/task/task_bloc.dart'
     as _i1028;
+import 'package:flutter_application_1/application/taskdata/taskdata_bloc.dart'
+    as _i25;
+import 'package:flutter_application_1/application/user/user_bloc.dart' as _i383;
 import 'package:flutter_application_1/domain/auth/i_auth_repository.dart'
     as _i824;
 import 'package:flutter_application_1/infrastructure/auth/auth_repository.dart'
@@ -46,8 +48,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i301.SignupBloc(gh<_i824.IAuthRepository>()));
     gh.factory<_i1028.TaskBloc>(
         () => _i1028.TaskBloc(gh<_i824.IAuthRepository>()));
-    gh.factory<_i296.UserBloc>(
-        () => _i296.UserBloc(gh<_i824.IAuthRepository>()));
+    gh.factory<_i383.UserBloc>(
+        () => _i383.UserBloc(gh<_i824.IAuthRepository>()));
+    gh.factory<_i25.TaskDataBloc>(
+        () => _i25.TaskDataBloc(gh<_i824.IAuthRepository>()));
     gh.factory<_i963.AuthBloc>(
         () => _i963.AuthBloc(gh<_i824.IAuthRepository>()));
     return this;

@@ -128,16 +128,19 @@ class __$$TaskDataModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TaskDataModelImpl implements _TaskDataModel {
   const _$TaskDataModelImpl(
-      {required this.id, required this.title, required this.completed});
+      {this.id = "", this.title = "", this.completed = false});
 
   factory _$TaskDataModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TaskDataModelImplFromJson(json);
 
   @override
+  @JsonKey()
   final String id;
   @override
+  @JsonKey()
   final String title;
   @override
+  @JsonKey()
   final bool completed;
 
   @override
@@ -178,9 +181,9 @@ class _$TaskDataModelImpl implements _TaskDataModel {
 
 abstract class _TaskDataModel implements TaskDataModel {
   const factory _TaskDataModel(
-      {required final String id,
-      required final String title,
-      required final bool completed}) = _$TaskDataModelImpl;
+      {final String id,
+      final String title,
+      final bool completed}) = _$TaskDataModelImpl;
 
   factory _TaskDataModel.fromJson(Map<String, dynamic> json) =
       _$TaskDataModelImpl.fromJson;

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/application/taskdata/taskdata_bloc.dart';
 import 'package:flutter_application_1/presentation/screens/task/model/task_data_model/task_data_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TaskScreen extends StatefulWidget {
   static const routePath = "/TaskScreen";
@@ -91,9 +93,7 @@ class _TaskScreenState extends State<TaskScreen> {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  if (!formKey.currentState!.validate()) {
-                                    return;
-                                  }
+                                  if (!formKey.currentState!.validate()) {}
                                   setState(() {
                                     notification.add(TaskDataModel(
                                       id: DateTime.now()
@@ -102,6 +102,16 @@ class _TaskScreenState extends State<TaskScreen> {
                                       title: taskController.text,
                                       completed: false,
                                     ));
+                                    context
+                                        .read<TaskDataBloc>()
+                                        .add(TaskdataEvent.addTaskData(
+                                            taskDataModel: TaskDataModel(
+                                          id: DateTime.now()
+                                              .millisecondsSinceEpoch
+                                              .toString(),
+                                          title: taskController.text,
+                                          completed: false,
+                                        )));
                                   });
                                   Navigator.pop(context);
                                   taskController.clear();

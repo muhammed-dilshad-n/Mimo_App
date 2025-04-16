@@ -16,7 +16,7 @@ part 'user_bloc.freezed.dart';
 class UserBloc extends Bloc<UserEvent, UserState> {
   final IAuthRepository _authRepository;
 
-  UserBloc(this._authRepository) : super(UserState.initial()) {
+  UserBloc(this._authRepository) : super(UserState()) {
     on<_GetUser>((event, emit) async {
       emit(state.copyWith(
           isSubmitting: true, authFailureOrSuccessOption: none()));

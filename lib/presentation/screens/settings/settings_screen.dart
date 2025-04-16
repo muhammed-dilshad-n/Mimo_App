@@ -34,8 +34,7 @@ class SettingsScreen extends StatelessWidget {
               state.users.isNotEmpty ? state.users.first.location : "london";
           final userbio = state.users.isNotEmpty
               ? state.users.first.bio
-              : " I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. I am a Marketing Specialist with 5+ years of experience helping brands increase revenue through strategic campaigns. Lee is a Marketing Strategist with 5+ years of experience helping brands increase revenue through strategic campaigns.";
-
+              : "I am flutter devloper";
           if (state.isSubmitting) {
             return Center(
               child: CircularProgressIndicator(),
@@ -89,14 +88,20 @@ class SettingsScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 25,
+                height: 15,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Text(
-                  userbio,
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    userbio,
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                  ),
                 ),
+              ),
+              SizedBox(
+                height: 10,
               ),
               SizedBox(
                 height: 40,

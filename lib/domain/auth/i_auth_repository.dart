@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_1/domain/auth/failures/auth_failure.dart';
 import 'package:flutter_application_1/domain/settings/model/user_model.dart';
+import 'package:flutter_application_1/presentation/screens/task/model/task_data_model/task_data_model.dart';
 import 'package:flutter_application_1/presentation/screens/task/model/taskmodel/task_model.dart';
 
 abstract class IAuthRepository {
@@ -47,4 +48,8 @@ abstract class IAuthRepository {
   // Future<Either<AuthFailure, Unit>> deleteTask({
   //   required TaskModel task,
   // });
+  Future<Either<AuthFailure, List<TaskDataModel>>> addTaskdata({
+    required TaskDataModel taskDataModel,
+  });
+  Future<Either<AuthFailure, List<TaskDataModel>>> getTaskdatas();
 }

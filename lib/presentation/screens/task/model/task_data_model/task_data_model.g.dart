@@ -8,9 +8,9 @@ part of 'task_data_model.dart';
 
 _$TaskDataModelImpl _$$TaskDataModelImplFromJson(Map<String, dynamic> json) =>
     _$TaskDataModelImpl(
-      id: json['id'] as String,
-      title: json['title'] as String,
-      completed: json['completed'] as bool,
+      id: json['id'] as String? ?? "",
+      title: json['title'] as String? ?? "",
+      completed: json['completed'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$TaskDataModelImplToJson(_$TaskDataModelImpl instance) =>
