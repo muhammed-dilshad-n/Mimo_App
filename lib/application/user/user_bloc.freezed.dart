@@ -573,7 +573,6 @@ abstract class _UpdateUser implements UserEvent {
 /// @nodoc
 mixin _$UserState {
   bool get isSubmitting => throw _privateConstructorUsedError;
-  List<UserModel> get users => throw _privateConstructorUsedError;
   UserModel? get currentUser => throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>>? get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
@@ -592,7 +591,6 @@ abstract class $UserStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isSubmitting,
-      List<UserModel> users,
       UserModel? currentUser,
       Option<Either<AuthFailure, Unit>>? authFailureOrSuccessOption});
 
@@ -615,7 +613,6 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
   @override
   $Res call({
     Object? isSubmitting = null,
-    Object? users = null,
     Object? currentUser = freezed,
     Object? authFailureOrSuccessOption = freezed,
   }) {
@@ -624,10 +621,6 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
-      users: null == users
-          ? _value.users
-          : users // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
       currentUser: freezed == currentUser
           ? _value.currentUser
           : currentUser // ignore: cast_nullable_to_non_nullable
@@ -664,7 +657,6 @@ abstract class _$$UserStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isSubmitting,
-      List<UserModel> users,
       UserModel? currentUser,
       Option<Either<AuthFailure, Unit>>? authFailureOrSuccessOption});
 
@@ -686,7 +678,6 @@ class __$$UserStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isSubmitting = null,
-    Object? users = null,
     Object? currentUser = freezed,
     Object? authFailureOrSuccessOption = freezed,
   }) {
@@ -695,10 +686,6 @@ class __$$UserStateImplCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
-      users: null == users
-          ? _value._users
-          : users // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
       currentUser: freezed == currentUser
           ? _value.currentUser
           : currentUser // ignore: cast_nullable_to_non_nullable
@@ -716,23 +703,12 @@ class __$$UserStateImplCopyWithImpl<$Res>
 class _$UserStateImpl implements _UserState {
   const _$UserStateImpl(
       {this.isSubmitting = false,
-      final List<UserModel> users = const [],
       this.currentUser,
-      this.authFailureOrSuccessOption})
-      : _users = users;
+      this.authFailureOrSuccessOption});
 
   @override
   @JsonKey()
   final bool isSubmitting;
-  final List<UserModel> _users;
-  @override
-  @JsonKey()
-  List<UserModel> get users {
-    if (_users is EqualUnmodifiableListView) return _users;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_users);
-  }
-
   @override
   final UserModel? currentUser;
   @override
@@ -740,7 +716,7 @@ class _$UserStateImpl implements _UserState {
 
   @override
   String toString() {
-    return 'UserState(isSubmitting: $isSubmitting, users: $users, currentUser: $currentUser, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+    return 'UserState(isSubmitting: $isSubmitting, currentUser: $currentUser, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
   }
 
   @override
@@ -750,7 +726,6 @@ class _$UserStateImpl implements _UserState {
             other is _$UserStateImpl &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
-            const DeepCollectionEquality().equals(other._users, _users) &&
             (identical(other.currentUser, currentUser) ||
                 other.currentUser == currentUser) &&
             (identical(other.authFailureOrSuccessOption,
@@ -761,11 +736,7 @@ class _$UserStateImpl implements _UserState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      isSubmitting,
-      const DeepCollectionEquality().hash(_users),
-      currentUser,
-      authFailureOrSuccessOption);
+      runtimeType, isSubmitting, currentUser, authFailureOrSuccessOption);
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -779,15 +750,12 @@ class _$UserStateImpl implements _UserState {
 abstract class _UserState implements UserState {
   const factory _UserState(
       {final bool isSubmitting,
-      final List<UserModel> users,
       final UserModel? currentUser,
       final Option<Either<AuthFailure, Unit>>?
           authFailureOrSuccessOption}) = _$UserStateImpl;
 
   @override
   bool get isSubmitting;
-  @override
-  List<UserModel> get users;
   @override
   UserModel? get currentUser;
   @override

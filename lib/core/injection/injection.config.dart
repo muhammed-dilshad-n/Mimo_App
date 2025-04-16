@@ -48,10 +48,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i301.SignupBloc(gh<_i824.IAuthRepository>()));
     gh.factory<_i1028.TaskBloc>(
         () => _i1028.TaskBloc(gh<_i824.IAuthRepository>()));
-    gh.factory<_i383.UserBloc>(
-        () => _i383.UserBloc(gh<_i824.IAuthRepository>()));
     gh.factory<_i25.TaskDataBloc>(
         () => _i25.TaskDataBloc(gh<_i824.IAuthRepository>()));
+    gh.factory<_i383.UserBloc>(
+        () => _i383.UserBloc(gh<_i824.IAuthRepository>()));
     gh.factory<_i963.AuthBloc>(
         () => _i963.AuthBloc(gh<_i824.IAuthRepository>()));
     return this;

@@ -35,7 +35,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         (userList) => emit(state.copyWith(
           isSubmitting: false,
           authFailureOrSuccessOption: some(right(unit)), // Indicate success
-          users: userList,
+          currentUser: userList, // Set the first user as currentUser
         )),
       );
     });
@@ -54,33 +54,33 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         (userList) => emit(state.copyWith(
           isSubmitting: false,
           authFailureOrSuccessOption: none(),
-          users: userList,
+          currentUser: userList, // Set the first user as currentUser
         )),
       );
     });
 
-    on<_UpdateUser>((event, emit) async {
-      emit(state.copyWith(
-          isSubmitting: true, authFailureOrSuccessOption: none()));
+    // on<_UpdateUser>((event, emit) async {
+    //   emit(state.copyWith(
+    //       isSubmitting: true, authFailureOrSuccessOption: none()));
 
-      final updateTask = await _authRepository.updateUserData(
-        name: event.name,
-        location: event.location,
-        bio: event.bio,
-        imageBytes: event.imageBytes,
-      );
+    //   final updateTask = await _authRepository.updateUserData(
+    //     name: event.name,
+    //     location: event.location,
+    //     bio: event.bio,
+    //     imageBytes: event.imageBytes,
+    //   );
 
-      updateTask.fold(
-        (failure) => emit(state.copyWith(
-          isSubmitting: false,
-          authFailureOrSuccessOption: some(left(failure)),
-        )),
-        (updatedUser) => emit(state.copyWith(
-          isSubmitting: false,
-          authFailureOrSuccessOption: some(right(unit)),
-          currentUser: updatedUser, // Update the currentUser
-        )),
-      );
-    });
+    //   updateTask.fold(
+    //     (failure) => emit(state.copyWith(
+    //       isSubmitting: false,
+    //       authFailureOrSuccessOption: some(left(failure)),
+    //     )),
+    //     (updatedUser) => emit(state.copyWith(
+    //       isSubmitting: false,
+    //       authFailureOrSuccessOption: some(right(unit)),
+    //       currentUser: updatedUser, // Update the currentUser
+    //     )),
+    //   );
+    // });
   }
 }

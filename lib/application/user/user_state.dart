@@ -4,7 +4,6 @@ part of 'user_bloc.dart';
 class UserState with _$UserState {
   const factory UserState({
     @Default(false) bool isSubmitting,
-    @Default([]) List<UserModel> users,
     UserModel? currentUser,
     Option<Either<AuthFailure, Unit>>? authFailureOrSuccessOption,
   }) = _UserState;

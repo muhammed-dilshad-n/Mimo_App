@@ -112,7 +112,7 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<Either<AuthFailure, List<UserModel>>> addUserData({
+  Future<Either<AuthFailure, UserModel>> addUserData({
     required String name,
     required String location,
     required String bio,
@@ -121,39 +121,25 @@ class AuthRepository implements IAuthRepository {
       final id = DateTime.now().millisecondsSinceEpoch.toString();
       _firestore
           .collection('users')
-          .doc(id)
+          .doc(
+            _auth.currentUser!.uid,
+          )
           .set({'id': id, 'name': name, 'location': location, 'bio': bio});
-      final data = await getuserData();
+      final data = await getuserDatas();
       return right(data);
     } catch (e) {
       return left(AuthFailure.unexpected(e.toString()));
     }
   }
 
-  // @override
-  // Future<Either<AuthFailure, Unit>> editUser({
-  //   required UserModel user,
-  // }) async {
-  //   try {
-  //     _firestore
-  //         .collection('user')
-  //         .doc(_auth.currentUser!.uid)
-  //         .set(user.toJson());
-  //     return right(unit);
-  //   } catch (e) {
-  //     return left(AuthFailure.unexpected(e.toString()));
-  //   }
-  // }
-
   @override
-  Future<Either<AuthFailure, List<UserModel>>> getUserdata() async {
+  Future<Either<AuthFailure, UserModel>> getUserdata() async {
     try {
-      _firestore
+      final data = await _firestore
           .collection('users')
           .doc(_auth.currentUser!.uid)
           .get()
           .then((value) {});
-      final data = await getuserData();
       return right(data);
     } catch (e) {
       return left(AuthFailure.unexpected(e.toString()));
@@ -187,17 +173,6 @@ class AuthRepository implements IAuthRepository {
     }
   }
 
-  // @override
-  // Future<Either<AuthFailure, Unit>> deleteTask(
-  //     {required TaskModel task}) async {
-  //   try {
-  //     _firestore.collection('user').doc(task.id).delete();
-  //     return right(unit);
-  //   } catch (e) {
-  //     return left(AuthFailure.unexpected(e.toString()));
-  //   }
-  // }
-
   @override
   Future<Either<AuthFailure, List<TaskModel>>> getTask() async {
     try {
@@ -211,12 +186,17 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future<Either<AuthFailure, List<TaskModel>>> updateTask({
-    required String docId,
+    // required String docId,
     String? emoji,
     String? title,
   }) async {
     try {
-      await _firestore.collection('task').doc(docId).update({
+      await _firestore
+          .collection('task')
+          .doc(
+            _auth.currentUser!.uid,
+          )
+          .update({
         if (emoji != null) 'emoji': emoji,
         if (title != null) 'title': title,
       });
@@ -240,119 +220,62 @@ class AuthRepository implements IAuthRepository {
         return TaskModel.fromJson(doc.data());
       }).toList();
     });
-    //     .collection('users')
-    //     .doc()
-    //     .collection('category')
-    //     .orderBy('id', descending: true)
-    //     .get()
-    //     .then((val) {
-    //   return val.docs.map((doc) {
-    //     log(doc.data().toString());
-    //     return TaskModel.fromJson(doc.data());
-    //   }).toList();
-    // });
     return data;
   }
 
-  Future<List<UserModel>> getuserData() async {
-    final List<UserModel> data =
-        await _firestore.collection('user').get().then((val) {
-      return val.docs.map((doc) {
-        log(doc.data().toString());
-        return UserModel.fromJson(doc.data());
-      }).toList();
+  Future<UserModel> getuserDatas() async {
+    final UserModel data = await _firestore
+        .collection('users')
+        .doc(_auth.currentUser!.uid)
+        .get()
+        .then((value) {
+      return UserModel.fromJson(value.data()!);
     });
     return data;
   }
 
-  @override
-  Future<Either<AuthFailure, UserModel>> updateUserData({
-    required String name,
-    required String location,
-    required String bio,
-    Uint8List? imageBytes,
-  }) async {
-    try {
-      final user = _auth.currentUser;
-      if (user == null) {
-        return left(const AuthFailure.unexpected(
-            "user not found")); // Or a more appropriate error
-      }
+//   @override
+//   Future<Either<AuthFailure, List<TaskDataModel>>> addTaskdata(
+//       {required TaskDataModel taskDataModel}) async {
+//     try {
+//       await _firestore
+//           .collection('task')
+//           .doc(
+//             taskDataModel.id,
+//           )
+//           .collection("taskdata")
+//           .doc(taskDataModel.id)
+//           .set({
+//         'title': taskDataModel.title,
+//         'completed': taskDataModel.completed,
+//       });
+//       return right([]);
+//     } catch (e) {
+//       return left(AuthFailure.unexpected(e.toString()));
+//     }
+//   }
 
-      final userId = user.uid;
-
-      // 2. Update Firestore Document
-      await _firestore.collection('user').doc(userId).update({
-        'name': name,
-        'location': location,
-        'bio': bio, // Only update if a new image was uploaded
-      });
-
-      // 3. Retrieve Updated User Data (and create UserModel)
-      final updatedDoc = await _firestore.collection('user').doc(userId).get();
-      final updatedData = updatedDoc.data();
-
-      if (updatedData == null) {
-        return left(const AuthFailure.unexpected(
-            "something went wrong ")); // Or a more appropriate error
-      }
-
-      final updatedUserModel = UserModel(
-        name: updatedData['name'] as String,
-        location: updatedData['location'] as String,
-        bio: updatedData['bio'] as String,
-        image: updatedData['imageUrl'] as String?, // Can be null
-      );
-
-      return right(updatedUserModel);
-    } catch (e) {
-      print(e);
-      return left(const AuthFailure.generic(
-          "something went wrong")); // Or a more specific error based on 'e'
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, List<TaskDataModel>>> addTaskdata(
-      {required TaskDataModel taskDataModel}) async {
-    try {
-      await _firestore
-          .collection('task')
-          .doc(
-            taskDataModel.id,
-          )
-          .collection("taskdata")
-          .doc(taskDataModel.id)
-          .set({
-        'title': taskDataModel.title,
-        'completed': taskDataModel.completed,
-      });
-      return right([]);
-    } catch (e) {
-      return left(AuthFailure.unexpected(e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, List<TaskDataModel>>> getTaskdatas() async {
-    try {
-      final data = await _firestore
-          .collection('task')
-          .doc(
-            _auth.currentUser!.uid,
-          )
-          .collection("taskdata")
-          .get()
-          .then((val) {
-        return val.docs.map((doc) {
-          log(doc.data().toString());
-          return TaskDataModel.fromJson(doc.data());
-        }).toList();
-      });
-      return right(data);
-    } catch (e) {
-      log(e.toString());
-      return left(AuthFailure.unexpected(e.toString()));
-    }
-  }
+//   @override
+//   Future<Either<AuthFailure, List<TaskDataModel>>> getTaskdatas() async {
+//     try {
+//       final data = await _firestore
+//           .collection('task')
+//           .doc(
+//             _auth.currentUser!.uid,
+//           )
+//           .collection("taskdata")
+//           .get()
+//           .then((val) {
+//         return val.docs.map((doc) {
+//           log(doc.data().toString());
+//           return TaskDataModel.fromJson(doc.data());
+//         }).toList();
+//       });
+//       return right(data);
+//     } catch (e) {
+//       log(e.toString());
+//       return left(AuthFailure.unexpected(e.toString()));
+//     }
+//   }
+// }
 }

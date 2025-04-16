@@ -12,6 +12,9 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final taskBloc = context.read<UserBloc>().add(UserEvent.loadedUser());
+    String username;
+    String location;
+    String bio;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -28,18 +31,21 @@ class SettingsScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.primary,
       body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
-          final username =
-              state.users.isNotEmpty ? state.users.first.name : "Max";
-          final userlocation =
-              state.users.isNotEmpty ? state.users.first.location : "london";
-          final userbio = state.users.isNotEmpty
-              ? state.users.first.bio
-              : "I am flutter devloper";
           if (state.isSubmitting) {
             return Center(
               child: CircularProgressIndicator(),
             );
           }
+          if (state.currentUser != null) {
+            username = state.currentUser!.name;
+            location = state.currentUser!.location;
+            bio = state.currentUser!.bio;
+          } else {
+            username = "Max";
+            location = "New York";
+            bio = "I am a new user";
+          }
+
           return Column(
             children: [
               SizedBox(
@@ -67,7 +73,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       Text(
                         textAlign: TextAlign.start,
-                        userlocation,
+                        location,
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500),
                       ),
@@ -95,7 +101,7 @@ class SettingsScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    userbio,
+                    bio,
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                   ),
                 ),
