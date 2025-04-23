@@ -155,7 +155,7 @@ class CategoriesScreen extends HookWidget {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => TaskScreen(),
+                                      builder: (context) => HomeView(),
                                     ),
                                   );
                                 },

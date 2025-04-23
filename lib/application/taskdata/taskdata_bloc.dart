@@ -14,24 +14,30 @@ class TaskDataBloc extends Bloc<TaskdataEvent, TaskDataState> {
   final IAuthRepository _authRepository;
   TaskDataBloc(this._authRepository) : super(TaskDataState()) {
     on<TaskdataEvent>((event, emit) async {
-      // await event.map(
-      // addTaskData: (e) async {
-      //   emit(
-      //     state.copyWith(isSubmitting: true),
-      //   );
-      //   final getTask =
-      //       await _authRepository.addTaskdata(taskDataModel: e.taskDataModel);
-      //   emit(getTask.fold(
-      //     (l) => state.copyWith(
-      //         isSubmitting: false, authFailureOrSuccessOption: l),
-      //     (r) => state.copyWith(
-      //       isSubmitting: false,
-      //       taskData: r,
-      //     ),
-      //   ));
-      // },
-      //   taskDataLoaded: (e) {},
-      // );
+      await event.map(
+        addTaskData: (e) async {
+          emit(
+            state.copyWith(isSubmitting: true),
+          );
+          final getTask = await _authRepository.addTaskdata(
+            id: e.id,
+            title: e.title,
+            isCompleted: e.isCompleted,
+          );
+
+          emit(getTask.fold(
+            (l) => state.copyWith(
+              isSubmitting: false,
+              authFailureOrSuccessOption: l,
+            ),
+            (r) => state.copyWith(
+              isSubmitting: false,
+              taskData: r,
+            ),
+          ));
+        },
+        taskDataLoaded: (e) {},
+      );
     });
   }
 }

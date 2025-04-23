@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_1/domain/auth/failures/auth_failure.dart';
 import 'package:flutter_application_1/domain/settings/model/user_model.dart';
+import 'package:flutter_application_1/presentation/screens/task/model/task_data_model/task_data_model.dart';
 import 'package:flutter_application_1/presentation/screens/task/model/taskmodel/task_model.dart';
 
 abstract class IAuthRepository {
@@ -26,6 +27,11 @@ abstract class IAuthRepository {
     required String location,
     required String bio,
   });
+  Future<Either<AuthFailure, UserModel>> updateUserData({
+    String? name,
+    String? location,
+    String? bio,
+  });
   Future<Either<AuthFailure, List<TaskModel>>> addTask({
     required String emoji,
     required String title,
@@ -34,5 +40,10 @@ abstract class IAuthRepository {
   Future<Either<AuthFailure, List<TaskModel>>> updateTask({
     String? emoji,
     String? title,
+  });
+  Future<Either<AuthFailure, List<TaskDataModel>>> addTaskdata({
+    required String id,
+    required String title,
+    required bool isCompleted,
   });
 }

@@ -36,6 +36,11 @@ class SettingsScreen extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           }
+          if (state.authFailureOrSuccessOption == null) {
+            return Center(
+              child: Text("Error"),
+            );
+          }
           if (state.currentUser != null) {
             username = state.currentUser!.name;
             location = state.currentUser!.location;
@@ -105,12 +110,6 @@ class SettingsScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                height: 40,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),

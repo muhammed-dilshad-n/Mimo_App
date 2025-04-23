@@ -50,12 +50,12 @@ final GoRouter router = GoRouter(
         return CategoriesScreen();
       },
     ),
-    GoRoute(
-      path: TaskScreen.routePath,
-      builder: (BuildContext context, GoRouterState state) {
-        return TaskScreen();
-      },
-    ),
+    // GoRoute(
+    //   path: TaskScreen.routePath,
+    //   builder: (BuildContext context, GoRouterState state) {
+    //     return TaskScreen();
+    //   },
+    // ),
     GoRoute(
       path: SettingsEditScreen.routePath,
       builder: (BuildContext context, GoRouterState state) {

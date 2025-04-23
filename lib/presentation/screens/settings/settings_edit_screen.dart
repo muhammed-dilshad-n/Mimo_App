@@ -157,11 +157,10 @@ class _SettingsEditScreenState extends State<SettingsEditScreen> {
                         backgroundColor: Colors.purpleAccent),
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        context.read<UserBloc>().add(UserEvent.getUser(
+                        context.read<UserBloc>().add(UserEvent.updateUser(
                               name: nameController.text,
                               location: locationController.text,
-                              bio: bioController
-                                  .text, // Pass image bytes if available
+                              bio: bioController.text,
                             ));
                       }
                     },

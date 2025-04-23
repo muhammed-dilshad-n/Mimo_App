@@ -18,19 +18,20 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TaskdataEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TaskDataModel taskDataModel) addTaskData,
+    required TResult Function(String id, String title, bool isCompleted)
+        addTaskData,
     required TResult Function() taskDataLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TaskDataModel taskDataModel)? addTaskData,
+    TResult? Function(String id, String title, bool isCompleted)? addTaskData,
     TResult? Function()? taskDataLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TaskDataModel taskDataModel)? addTaskData,
+    TResult Function(String id, String title, bool isCompleted)? addTaskData,
     TResult Function()? taskDataLoaded,
     required TResult orElse(),
   }) =>
@@ -83,9 +84,7 @@ abstract class _$$AddTaskDataImplCopyWith<$Res> {
           _$AddTaskDataImpl value, $Res Function(_$AddTaskDataImpl) then) =
       __$$AddTaskDataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({TaskDataModel taskDataModel});
-
-  $TaskDataModelCopyWith<$Res> get taskDataModel;
+  $Res call({String id, String title, bool isCompleted});
 }
 
 /// @nodoc
@@ -101,38 +100,43 @@ class __$$AddTaskDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? taskDataModel = null,
+    Object? id = null,
+    Object? title = null,
+    Object? isCompleted = null,
   }) {
     return _then(_$AddTaskDataImpl(
-      taskDataModel: null == taskDataModel
-          ? _value.taskDataModel
-          : taskDataModel // ignore: cast_nullable_to_non_nullable
-              as TaskDataModel,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      isCompleted: null == isCompleted
+          ? _value.isCompleted
+          : isCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
-  }
-
-  /// Create a copy of TaskdataEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $TaskDataModelCopyWith<$Res> get taskDataModel {
-    return $TaskDataModelCopyWith<$Res>(_value.taskDataModel, (value) {
-      return _then(_value.copyWith(taskDataModel: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$AddTaskDataImpl implements _AddTaskData {
-  const _$AddTaskDataImpl({required this.taskDataModel});
+  const _$AddTaskDataImpl(
+      {required this.id, required this.title, required this.isCompleted});
 
   @override
-  final TaskDataModel taskDataModel;
+  final String id;
+  @override
+  final String title;
+  @override
+  final bool isCompleted;
 
   @override
   String toString() {
-    return 'TaskdataEvent.addTaskData(taskDataModel: $taskDataModel)';
+    return 'TaskdataEvent.addTaskData(id: $id, title: $title, isCompleted: $isCompleted)';
   }
 
   @override
@@ -140,12 +144,14 @@ class _$AddTaskDataImpl implements _AddTaskData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddTaskDataImpl &&
-            (identical(other.taskDataModel, taskDataModel) ||
-                other.taskDataModel == taskDataModel));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.isCompleted, isCompleted) ||
+                other.isCompleted == isCompleted));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, taskDataModel);
+  int get hashCode => Object.hash(runtimeType, id, title, isCompleted);
 
   /// Create a copy of TaskdataEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -158,30 +164,31 @@ class _$AddTaskDataImpl implements _AddTaskData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TaskDataModel taskDataModel) addTaskData,
+    required TResult Function(String id, String title, bool isCompleted)
+        addTaskData,
     required TResult Function() taskDataLoaded,
   }) {
-    return addTaskData(taskDataModel);
+    return addTaskData(id, title, isCompleted);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TaskDataModel taskDataModel)? addTaskData,
+    TResult? Function(String id, String title, bool isCompleted)? addTaskData,
     TResult? Function()? taskDataLoaded,
   }) {
-    return addTaskData?.call(taskDataModel);
+    return addTaskData?.call(id, title, isCompleted);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TaskDataModel taskDataModel)? addTaskData,
+    TResult Function(String id, String title, bool isCompleted)? addTaskData,
     TResult Function()? taskDataLoaded,
     required TResult orElse(),
   }) {
     if (addTaskData != null) {
-      return addTaskData(taskDataModel);
+      return addTaskData(id, title, isCompleted);
     }
     return orElse();
   }
@@ -219,10 +226,14 @@ class _$AddTaskDataImpl implements _AddTaskData {
 }
 
 abstract class _AddTaskData implements TaskdataEvent {
-  const factory _AddTaskData({required final TaskDataModel taskDataModel}) =
-      _$AddTaskDataImpl;
+  const factory _AddTaskData(
+      {required final String id,
+      required final String title,
+      required final bool isCompleted}) = _$AddTaskDataImpl;
 
-  TaskDataModel get taskDataModel;
+  String get id;
+  String get title;
+  bool get isCompleted;
 
   /// Create a copy of TaskdataEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -272,7 +283,8 @@ class _$TaskDataLoadedImpl implements _TaskDataLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TaskDataModel taskDataModel) addTaskData,
+    required TResult Function(String id, String title, bool isCompleted)
+        addTaskData,
     required TResult Function() taskDataLoaded,
   }) {
     return taskDataLoaded();
@@ -281,7 +293,7 @@ class _$TaskDataLoadedImpl implements _TaskDataLoaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TaskDataModel taskDataModel)? addTaskData,
+    TResult? Function(String id, String title, bool isCompleted)? addTaskData,
     TResult? Function()? taskDataLoaded,
   }) {
     return taskDataLoaded?.call();
@@ -290,7 +302,7 @@ class _$TaskDataLoadedImpl implements _TaskDataLoaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TaskDataModel taskDataModel)? addTaskData,
+    TResult Function(String id, String title, bool isCompleted)? addTaskData,
     TResult Function()? taskDataLoaded,
     required TResult orElse(),
   }) {

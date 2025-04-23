@@ -59,28 +59,27 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       );
     });
 
-    // on<_UpdateUser>((event, emit) async {
-    //   emit(state.copyWith(
-    //       isSubmitting: true, authFailureOrSuccessOption: none()));
+    on<_UpdateUser>((event, emit) async {
+      emit(state.copyWith(
+          isSubmitting: true, authFailureOrSuccessOption: none()));
 
-    //   final updateTask = await _authRepository.updateUserData(
-    //     name: event.name,
-    //     location: event.location,
-    //     bio: event.bio,
-    //     imageBytes: event.imageBytes,
-    //   );
+      final updateTask = await _authRepository.updateUserData(
+        name: event.name,
+        location: event.location,
+        bio: event.bio,
+      );
 
-    //   updateTask.fold(
-    //     (failure) => emit(state.copyWith(
-    //       isSubmitting: false,
-    //       authFailureOrSuccessOption: some(left(failure)),
-    //     )),
-    //     (updatedUser) => emit(state.copyWith(
-    //       isSubmitting: false,
-    //       authFailureOrSuccessOption: some(right(unit)),
-    //       currentUser: updatedUser, // Update the currentUser
-    //     )),
-    //   );
-    // });
+      updateTask.fold(
+        (failure) => emit(state.copyWith(
+          isSubmitting: false,
+          authFailureOrSuccessOption: some(left(failure)),
+        )),
+        (updatedUser) => emit(state.copyWith(
+          isSubmitting: false,
+          authFailureOrSuccessOption: some(right(unit)),
+          currentUser: updatedUser, // Update the currentUser
+        )),
+      );
+    });
   }
 }
